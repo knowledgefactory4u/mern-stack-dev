@@ -1,0 +1,20 @@
+{
+  "name": "knf-BackEnd",
+  "version": "0.1.0",
+  "private": true,
+  "keywords": [
+    "Express",
+    "RestAPI",
+    "MongoDB",
+    "Mongoose",
+    "Notes"
+  ],
+  "author": "Sibin",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.8.10"
+  }
+}
