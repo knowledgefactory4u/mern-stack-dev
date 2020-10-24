@@ -1,9 +1,8 @@
 const User = require('../models/user.model.js');
 
-// Create and Save a new Note
+// Create and Save a new User
 exports.create = (req, res) => {
-   
-    // Create a Note
+    // Create a User
     const note = new User({
         
         firstName: req.body.firstName,
@@ -11,7 +10,7 @@ exports.create = (req, res) => {
         emailId:req.body.emailId
     });
 
-    // Save Note in the database
+    // Save User in the database
     note.save()
     .then(data => {
         res.send(data);
@@ -21,8 +20,7 @@ exports.create = (req, res) => {
         });
     });
 };
-
-// Retrieve and return all notes from the database.
+// Retrieve and return all Users from the database.
 exports.findAll = (req, res) => {
     User.find()
     .then(notes => {
@@ -33,8 +31,7 @@ exports.findAll = (req, res) => {
         });
     });
 };
-
-// Find a single note with a noteId
+// Find a single User with a id
 exports.findOne = (req, res) => {
     User.findById(req.params.id)
     .then(note => {
@@ -55,7 +52,7 @@ exports.findOne = (req, res) => {
         });
     });
 };
-// Update a note identified by the noteId in the request
+// Update a User identified by the id in the request
 exports.update = (req, res) => {
    
     User.findByIdAndUpdate(req.params.id, req.body, { new: true })
@@ -74,26 +71,25 @@ exports.update = (req, res) => {
     });
     
 };
-
-// Delete a note with the specified noteId in the request
+// Delete a User with the specified id in the request
 exports.delete = (req, res) => {
     
     User.findByIdAndRemove(req.params.id)
     .then(note => {
        // if(!note) {
             //return res.status(404).send({
-            //    message: "Note not found with id " + req.params.id
+            //    message: "User not found with id " + req.params.id
             //});
        // }
-        res.send({message: "Note deleted successfully!"});
+        res.send({message: "User deleted successfully!"});
     }).catch(err => {
         if(err.kind === 'ObjectId' || err.name === 'NotFound') {
             return res.status(404).send({
-                message: "Note not found with id " + req.params.id
+                message: "User not found with id " + req.params.id
             });                
         }
         return res.status(500).send({
-            message: "Could not delete note with id " + req.params.id
+            message: "Could not delete User with id " + req.params.id
         });
     });
 };
